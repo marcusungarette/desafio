@@ -3,18 +3,24 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-nossas-ofertas',
   templateUrl: './nossas-ofertas.component.html',
-  styleUrls: ['./nossas-ofertas.component.scss']
+  styleUrls: ['./nossas-ofertas.component.scss'],
 })
-
 export class NossasOfertasComponent implements OnInit {
-
-  displayedColumns: string[] = ['id', 'titulo', 'preco', 'precoDesconto'];
+  displayedColumns: string[] = [
+    'id',
+    'titulo',
+    'preco',
+    'precoDesconto',
+    'loja',
+    'descricao',
+  ];
   dataSource;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
-    this.dataSource = JSON.parse(window.localStorage.getItem("ofertas-game-tracker"));
+    this.dataSource = JSON.parse(
+      window.localStorage.getItem('ofertas-game-tracker')
+    );
   }
-
 }

@@ -1,59 +1,101 @@
 <section>
-    <div class="container">
-        <h2>Cadastro de Ofertas</h2>
-
-        <div class="grid">
-            <div class="campos">
-                <mat-form-field appearance="outline">
-                    <mat-label>ID</mat-label>
-                    <input matInput placeholder="ID do jogo">
-                </mat-form-field>
-            </div>
-
-
-            <div class="campos">
-                <mat-form-field appearance="outline">
-                    <mat-label>Título</mat-label>
-                    <input matInput placeholder="Título do jogo">
-                </mat-form-field>
-            </div>
-
-            <div class="campos">
-                <mat-form-field appearance="outline">
-                    <mat-label>Preço</mat-label>
-                    <input matInput placeholder="Título do jogo">
-                </mat-form-field>
-            </div>
-
-            <div class="campos">
-                <mat-form-field appearance="outline">
-                    <mat-label>Preço com desconto</mat-label>
-                    <input matInput placeholder="Peeço com deaconto">
-                </mat-form-field>
-            </div>
-
-            <div class="campos">
-                <mat-form-field appearance="outline" *ngFor="let loja of lojas">
-                    <mat-label>Loja</mat-label>
-                    <mat-select>
-                        <mat-option value="5">{{loja}}</mat-option>
-                        <mat-option value="2">{{loja}}</mat-option>
-                        <mat-option value="7">{{loja}}</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-
-
-            <div class="campos">
-                <mat-form-field appearance="outline">
-                    <mat-label>Descrição</mat-label>
-                    <input matInput placeholder="">
-                </mat-form-field>
-            </div>
-
-        </div>
+  <div class="container">
+    <h2>Cadastro de Ofertas</h2>
+    <form [formGroup]="myForm" (ngSubmit)="submitForm()">
+      <div class="grid">
         <div class="campos">
-            <button mat-raised-button color="primary">Salvar</button>
+          <mat-form-field appearance="outline" hideRequiredMarker>
+            <mat-label>ID</mat-label>
+            <input
+              matInput
+              [formControl]="id"
+              required
+              placeholder="ID do jogo"
+            />
+            <mat-error *ngIf="id.invalid">{{ getErrorMessage() }}</mat-error>
+          </mat-form-field>
         </div>
-    </div>
+
+        <div class="campos">
+          <mat-form-field appearance="outline" hideRequiredMarker>
+            <mat-label>Título</mat-label>
+            <input
+              matInput
+              [formControl]="titulo"
+              required
+              placeholder="Título do jogo"
+            />
+            <mat-error *ngIf="titulo.invalid">{{
+              getErrorMessage()
+            }}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="campos">
+          <mat-form-field appearance="outline" hideRequiredMarker>
+            <mat-label>Preço</mat-label>
+            <input
+              matInput
+              [formControl]="preco"
+              required
+              placeholder="Preço do jogo"
+            />
+            <mat-error *ngIf="preco.invalid">{{ getErrorMessage() }}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="campos">
+          <mat-form-field appearance="outline" hideRequiredMarker>
+            <mat-label>Preço com desconto</mat-label>
+            <input
+              matInput
+              [formControl]="precoDesconto"
+              required
+              placeholder="Preço com desconto"
+            />
+            <mat-error *ngIf="precoDesconto.invalid">{{
+              getErrorMessage()
+            }}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="campos">
+          <mat-form-field appearance="outline" hideRequiredMarker>
+            <mat-label>Loja</mat-label>
+            <mat-select required [formControl]="loja">
+              <mat-option>Selecione a loja</mat-option>
+              <mat-option *ngFor="let loja of lojas" value="{{ loja.id }}">
+                {{ loja.nome }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="loja.invalid">{{ getErrorMessage() }}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="campos">
+          <mat-form-field appearance="outline" hintLabel="Max 80 characters">
+            <mat-label>Descrição</mat-label>
+            <input
+              matInput
+              #input
+              maxlength="125"
+              placeholder="Descrição do jogo"
+            />
+            <mat-hint align="end">{{ input.value?.length || 0 }}/80</mat-hint>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="campos">
+        <button
+          mat-raised-button
+          color="primary"
+          name="submit"
+          value="submit"
+          type="submit"
+        >
+          Salvar
+        </button>
+      </div>
+    </form>
+  </div>
 </section>
