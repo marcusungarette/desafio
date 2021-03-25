@@ -10,19 +10,21 @@ export interface lojas {
   id: number;
   nome: string;
 }
+
 @Component({
   selector: 'app-cadastro-ofertas',
   templateUrl: './cadastro-ofertas.component.html',
   styleUrls: ['./cadastro-ofertas.component.scss'],
 })
 export class CadastroOfertasComponent implements OnInit {
-  myForm: FormGroup;
+  form: FormGroup;
 
   id = new FormControl('', [Validators.required]);
   titulo = new FormControl('', [Validators.required]);
   preco = new FormControl('', [Validators.required, Validators.min(1)]);
   precoDesconto = new FormControl('', [Validators.required, Validators.min(1)]);
   loja = new FormControl('', [Validators.required]);
+  descricao = new FormControl('', [Validators.required]);
 
   getErrorMessage() {
     if (
@@ -30,7 +32,8 @@ export class CadastroOfertasComponent implements OnInit {
       this.titulo.hasError('required') ||
       this.preco.hasError('required') ||
       this.precoDesconto.hasError('required') ||
-      this.loja.hasError('required')
+      this.loja.hasError('required') ||
+      this.descricao.hasError('required')
     ) {
       return 'Campo obrigatório';
     }
@@ -42,13 +45,24 @@ export class CadastroOfertasComponent implements OnInit {
     { id: 3, nome: 'Steam' },
   ];
 
-  constructor() {}
-
-  ngOnInit(): void {
-    this.submitForm();
+  constructor(private formBuilder: FormBuilder) {
+    this.createForm();
   }
 
+  createForm() {
+    this.form = this.formBuilder.group({
+      id: this.id,
+      titulo: this.titulo,
+      preco: this.preco,
+      precoDesconto: this.precoDesconto,
+      loja: this.loja,
+      descricao: this.descricao,
+    });
+  }
+
+  ngOnInit(): void {}
+
   submitForm() {
-    console.log(this.myForm.value);
+    console.log(this.form.value);
   }
 }

@@ -1,7 +1,7 @@
 <section>
   <div class="container">
     <h2>Cadastro de Ofertas</h2>
-    <form [formGroup]="myForm" (ngSubmit)="submitForm()">
+    <form [formGroup]="form" (ngSubmit)="submitForm()">
       <div class="grid">
         <div class="campos">
           <mat-form-field appearance="outline" hideRequiredMarker>
@@ -73,14 +73,23 @@
         </div>
 
         <div class="campos">
-          <mat-form-field appearance="outline" hintLabel="Max 80 characters">
+          <mat-form-field
+            appearance="outline"
+            hideRequiredMarker
+            hintLabel="Max 80 characters"
+          >
             <mat-label>Descrição</mat-label>
             <input
               matInput
               #input
-              maxlength="125"
+              required
+              [formControl]="descricao"
+              maxlength="80"
               placeholder="Descrição do jogo"
             />
+            <mat-error *ngIf="descricao.invalid">{{
+              getErrorMessage()
+            }}</mat-error>
             <mat-hint align="end">{{ input.value?.length || 0 }}/80</mat-hint>
           </mat-form-field>
         </div>
