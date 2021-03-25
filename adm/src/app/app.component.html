@@ -14,6 +14,9 @@
     </nav>
   </div>
 </header>
+<app-cadastro-ofertas
+  (messageEvent)="receiveMessage($event)"
+></app-cadastro-ofertas>
 
 <main>
   <router-outlet></router-outlet>
