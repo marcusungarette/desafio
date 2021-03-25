@@ -1,10 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Output,
-  ViewChild,
-  EventEmitter,
-} from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import {
   FormControl,
   Validators,
@@ -25,7 +19,8 @@ export interface lojas {
   styleUrls: ['./cadastro-ofertas.component.scss'],
 })
 export class CadastroOfertasComponent implements OnInit {
-  @Output() messageEvent = new EventEmitter();
+  @Input() message: Oferta;
+  @Output() messageEvent: EventEmitter<Oferta> = new EventEmitter<Oferta>();
 
   form: FormGroup;
 
@@ -55,7 +50,7 @@ export class CadastroOfertasComponent implements OnInit {
     { id: 3, nome: 'Steam' },
   ];
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {
+  constructor(public formBuilder: FormBuilder, public router: Router) {
     this.createForm();
   }
 
@@ -75,6 +70,8 @@ export class CadastroOfertasComponent implements OnInit {
   submitForm() {
     const message = this.form.value;
     this.messageEvent.emit(message);
+    this.form.reset('');
     this.router.navigate(['/nossasofertas']);
+    alert('Oferta salva');
   }
 }
