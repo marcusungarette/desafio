@@ -64,7 +64,7 @@
             <mat-label>Loja</mat-label>
             <mat-select required [formControl]="loja">
               <mat-option>Selecione a loja</mat-option>
-              <mat-option *ngFor="let loja of lojas" value="{{ loja.id }}">
+              <mat-option *ngFor="let loja of lojas" value="{{ loja.nome }}">
                 {{ loja.nome }}
               </mat-option>
             </mat-select>
