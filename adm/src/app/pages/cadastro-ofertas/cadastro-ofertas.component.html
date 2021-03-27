@@ -96,6 +96,7 @@
       </div>
       <div class="campos">
         <button
+          [disabled]="!form.valid"
           mat-raised-button
           color="primary"
           name="submit"
