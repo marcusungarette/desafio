@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+:root {
+  --primario: #0b1641;
+  --secundario: #c70160;
+  --sucesso: #16857b;
+  --texto: #ffffff;
+}
+
+* {
+  --main-font: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial,
+    Helvetica, sans-serif;
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial,
+    Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(
+    45deg,
+    var(--primario) 0%,
+    var(--secundario) 100%
+  );
+  background-attachment: fixed;
+  color: var(--texto);
+}

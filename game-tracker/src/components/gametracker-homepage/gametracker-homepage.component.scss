@@ -1,0 +1,133 @@
+.container {
+  width: 80%;
+  min-height: calc(100vh - 400px);
+  margin: 50px auto;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-flow: wrap;
+}
+
+.card {
+  padding: auto;
+  background: var(--primario);
+  border-radius: 8px;
+  margin-bottom: 50px;
+  transition: 0.3s;
+}
+
+.card-header {
+  display: flex;
+  border-radius: 8px;
+  width: 360px;
+  height: 150px;
+  text-align: center;
+  background: var(--primario);
+  color: #fff;
+}
+
+.card-header .image {
+  display: block;
+  border-radius: 8px 8px 0 0;
+  width: 100%;
+  height: 100%;
+  // height: auto; /* maintain aspect ratio*/
+  // margin: auto; /*optional centering of image*/
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.card-body .title {
+  flex-direction: column;
+  font-weight: 400;
+  align-self: start;
+  color: var(--texto);
+}
+
+.card-body .normal-price {
+  flex-direction: column;
+  margin: 5px;
+  align-self: start;
+  text-decoration: line-through;
+  color: var(--texto);
+}
+
+.card-body .sale-price {
+  flex-direction: column;
+  font-size: 28px;
+  font-weight: bold;
+  margin: 5px;
+  align-self: start;
+  color: var(--texto);
+}
+
+.card-body .btn-details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: var(--secundario);
+  border-radius: 8px;
+  font-weight: bold;
+  width: 116px;
+  height: 39px;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 5px 5px;
+}
+
+.card-body .card-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.card-body .btn-savings {
+  display: flex;
+  align-self: flex-end;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: var(--sucesso);
+  border-radius: 8px;
+  font-weight: bold;
+  width: 86px;
+  height: 39px;
+  text-decoration: none;
+  padding: 5px 5px;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.25);
+}
+
+.load-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.load-box .load-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 360px;
+  height: 50px;
+  border-radius: 8px;
+  text-decoration: none;
+  border: none;
+  background: var(--primario);
+  font-size: 18px;
+  color: var(--texto);
+  font-family: var(--main-font);
+  font-weight: 200;
+}

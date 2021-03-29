@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div
+      class="card"
+      *ngFor="
+        let gametraker of gametrackers | search: query | typeFilter: typeFilters
+      "
+    >
+      <div class="card-header">
+        <img
+          src="{{ gametraker.thumb }}"
+          alt="image of {{ gametraker.title }}"
+          class="image"
+        />
+      </div>
+      <div class="card-body">
+        <p class="title">{{ gametraker.title }}</p>
+        <p class="normal-price">{{ gametraker.normalPrice }}</p>
+        <p class="sale-price">{{ gametraker.salePrice }}</p>
+        <div class="card-buttons">
+          <a href="#" class="btn-details">detalhes</a>
+          <a href="#" class="btn-savings">{{ gametraker.savings }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="load-box">
+    <a href="#" class="load-btn">Carregar mais</a>
+  </div>
+</div>
